@@ -6,8 +6,8 @@ public class Job
 {
     public string _lcJobTitle;
     public string _lcCompany;
-    public int _lcStartYear;
-    public int _lcEndYear;
+    public string _lcStartYear;
+    public string _lcEndYear;
 
     public void Display()
     {
