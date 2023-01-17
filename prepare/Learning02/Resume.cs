@@ -1,3 +1,5 @@
+// Logan Clark 1/17/23
+
 using System;
 
 public class Resume
@@ -11,9 +13,9 @@ public class Resume
         Console.WriteLine($"Name: {_lcName}");
         Console.WriteLine("Jobs:");
 
-        foreach (Job job in _lcJobs)
+        foreach (Job lcJob in _lcJobs)
         {
-            job.Display();
+            lcJob.Display();
         }
     }
 }
