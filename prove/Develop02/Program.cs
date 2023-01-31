@@ -26,15 +26,14 @@ class Program
                 break;
 
                 case 1: // Write new entry
-                Question prompt = new Question();
-                string newPrompt = prompt.RandPrompt;
+                string newPrompt = journal.RandPrompt;
                 Console.Write(newPrompt );
                 journal.AddEntry(Console.ReadLine(), newPrompt);
                 break;
 
                 case 2: // Display journal
-                foreach (string entry in journal.Entries){
-                    Console.WriteLine(entry);
+                foreach (Entry entry in journal.Entries){
+                    Console.WriteLine(string.Format("{0} {1} {2}", entry.LogDate, entry.Question, entry.Log));
                 }
                 break;
 
@@ -55,8 +54,8 @@ class Program
                 //load the journal
                 try{
                 journal.Load(loadFileName);
-                    foreach (string entry in journal.Entries){
-                        Console.WriteLine(entry);
+                    foreach (Entry entry in journal.Entries){
+                        Console.WriteLine(string.Format("{0} {1} {2}", entry.LogDate, entry.Question, entry.Log));
                     }                    
                 }
                 catch(Exception e){
