@@ -21,7 +21,7 @@ class Program
 
             switch (_lcUsrNum)
             {
-                case 0:
+                case 0: //Displays the menu when user types 0.
                 ShowMenu();
                 break;
 
@@ -32,6 +32,7 @@ class Program
                 break;
 
                 case 2: // Display journal
+                //For loop that reads Entry by entry and displays the date, question, and entry.
                 foreach (Entry entry in journal.Entries){
                     Console.WriteLine(string.Format("{0} {1} {2}", entry.LogDate, entry.Question, entry.Log));
                 }
