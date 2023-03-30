@@ -11,7 +11,7 @@ public class LCFileManager
   public List<List<string>> LCFileLoader()
   {
     List<List<string>> LCLines = new List<List<string>>();
-    string LCFilename = "Recipets.txt";
+    string LCFilename = "Reciepts.txt";
     string[] LCLinesArray = System.IO.File.ReadAllLines(LCFilename);
 
     foreach (string LCLineArray in LCLinesArray)
@@ -41,7 +41,7 @@ public class LCFileManager
 
     string LCPointsTotalString = LCPointsTotal.ToString();
 
-    LCLines[0] = LCPointsTotalString;
+    // LCLines[0] = LCPointsTotalString;
 
     foreach (string LCGoal in LCRecieptList)
     {
