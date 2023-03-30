@@ -158,34 +158,6 @@ class Program
           Print("Press Enter to continue");
           Read();
           break;
-        // case "5":
-        //   // Record Event
-        //   Print("The Reciepts:");
-        //   int Counter2 = 1;
-        //   foreach (ParentReciept Reciept in Reciepts)
-        //   {
-        //     Print($"{Counter2}. {Reciept.ToString()}");
-        //     Counter2++;
-        //   }
-        //   PrintNoBreak("Which goal did you accomplish? ");
-        //   int spamCompltGoal = int.Parse(SpamRead());
-        //   int spamEarnedPoints = 0;
-        //   if (spamGoals[spamCompltGoal - 1].SpamGetIsComplete())
-        //   {
-        //     SpamPrint("The goal is already complete.");
-        //   }
-        //   else
-        //   {
-        //     spamEarnedPoints = spamGoals[spamCompltGoal - 1].SpamRecordEvent();
-        //   }
-
-        //   SpamPrint("");
-        //   SpamPrint($"Congratulations! You have earned {spamEarnedPoints} points!");
-        //   spamCurrentPoints += spamEarnedPoints;
-        //   SpamPrint($"You now have {spamCurrentPoints} points");
-        //   SpamPrint("Press enter to continue");
-        //   SpamRead();
-        //   break;
         case "5":
           // Quit
           KeepRunning = false;
