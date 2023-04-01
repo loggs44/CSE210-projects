@@ -1,16 +1,16 @@
 public class WalmartReciept : ParentReciept
 {
-    public WalmartReciept(string _LCstoreName, string _LCPuchaseDate, int _LCpoints, int _LCpurchaseTotal) : base(_LCstoreName, _LCPuchaseDate, _LCpoints, _LCpurchaseTotal)
+    public WalmartReciept(string _LCstoreName, string _LCPuchaseDate, int _LCpurchaseTotal, int _LCpoints) : base(_LCstoreName, _LCPuchaseDate, _LCpurchaseTotal, _LCpoints)
     {
 
     }
     public override double LCAmountofPoints()
     {
-        if (_LCpurchaseTotal < 50){
-            return _LCpoints + 0;
+        if (100 > _LCpurchaseTotal && _LCpurchaseTotal < 200){
+            return _LCpoints = _LCpurchaseTotal * 2;
         }
         else {
-            return _LCpoints * 2;
+            return _LCpoints = _LCpurchaseTotal + 0;
         }
     }
 }

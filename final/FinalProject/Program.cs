@@ -5,9 +5,9 @@ class Program
     static void Main(string[] args)
     {
     Console.Clear();
-    List<String> Levels = new List<String>() { "Recruit", "Amatuer", "Skillfull Shopper", "Expert" };
+    List<String> Levels = new List<String>() { "Recruit", "Amatuer", "Skillfull Shopper", "Expert Shopper" };
     string CurrentLevel = Levels[0];
-    int CurrentPoints = 0;
+    int LCPointsTotal = 0;
     List<ParentReciept> Reciepts = new List<ParentReciept>();
     LCMenu menu = new LCMenu();
     LCFileManager FileManager = new LCFileManager();
@@ -15,22 +15,22 @@ class Program
 
     while (KeepRunning)
     {
-      if (CurrentPoints > 800)
+      if (LCPointsTotal > 800)
       {
         CurrentLevel = Levels[3];
       }
-      else if (CurrentPoints > 500)
+      else if (LCPointsTotal > 500)
       {
         CurrentLevel = Levels[2];
       }
-      else if (CurrentPoints > 300)
+      else if (LCPointsTotal > 300)
       {
         CurrentLevel = Levels[1];
       }
       Console.Clear();
       Print("Reciept Point Tracker");
       Print("");
-      Print($"You have {CurrentPoints} points");
+      Print($"You have {LCPointsTotal} points");
       Print("");
       Print($"You are a {CurrentLevel}");
       menu.LCMainMenu();
@@ -44,12 +44,12 @@ class Program
           String LCStoreName = "";
           string LCPurchaseDate = "";
           int LCpurchaseTotal = 0;
-          int LCPointsTotal = 0;
+          // int LCPointsTotal = 0;
 
           PrintNoBreak("What is the name of the store? ");
           LCStoreName = Read();
           Print("");
-          PrintNoBreak("What was the purchase date?(Format: Day-Month-Year) ");
+          PrintNoBreak("What was the purchase date?(Format: Day/Month/Year) ");
           LCPurchaseDate = Read();
           Print("");
           PrintNoBreak("What was the total?(Rounded to the nearest dollar) ");
@@ -58,23 +58,27 @@ class Program
           {
             case "1":
               // Walmart Reciept
-              WalmartReciept LCWalmart = new WalmartReciept(LCStoreName, LCPurchaseDate, LCPointsTotal, LCpurchaseTotal);
+              WalmartReciept LCWalmart = new WalmartReciept(LCStoreName, LCPurchaseDate, LCpurchaseTotal, LCPointsTotal);
               Reciepts.Add(LCWalmart);
+              LCPointsTotal += Convert.ToInt32(LCWalmart.LCAmountofPoints());
               break;
             case "2":
               // Target Reciept
-              TargetReciept LCTarget = new TargetReciept(LCStoreName, LCPurchaseDate, LCPointsTotal, LCpurchaseTotal);
+              TargetReciept LCTarget = new TargetReciept(LCStoreName, LCPurchaseDate, LCpurchaseTotal, LCPointsTotal);
               Reciepts.Add(LCTarget);
+              LCPointsTotal += Convert.ToInt32(LCTarget.LCAmountofPoints());
               break;
             case "3":
               // SamsClubReciept
-              SamsClubReciept LCSamsClub = new SamsClubReciept(LCStoreName, LCPurchaseDate, LCPointsTotal,LCpurchaseTotal);
+              SamsClubReciept LCSamsClub = new SamsClubReciept(LCStoreName, LCPurchaseDate, LCpurchaseTotal, LCPointsTotal);
               Reciepts.Add(LCSamsClub);
+              LCPointsTotal += Convert.ToInt32(LCSamsClub.LCAmountofPoints());
             break;
             case "4":
             // Albertsons Reciept
-              AlbertsonsReciept LCAlbertsons = new AlbertsonsReciept(LCStoreName, LCPurchaseDate, LCPointsTotal,LCpurchaseTotal);
+              AlbertsonsReciept LCAlbertsons = new AlbertsonsReciept(LCStoreName, LCPurchaseDate, LCpurchaseTotal, LCPointsTotal);
               Reciepts.Add(LCAlbertsons);
+              LCPointsTotal += Convert.ToInt32(LCAlbertsons.LCAmountofPoints());
               break;            
           }
           break;
@@ -100,7 +104,7 @@ class Program
             LCRecieptsAsStrings.Add(reciept.LCGetStringToSave());
           }
 
-          FileManager.LCFileSaver(LCRecieptsAsStrings, CurrentPoints);
+          FileManager.LCFileSaver(LCRecieptsAsStrings, LCPointsTotal);
 
           Print("File Saved!");
           Print("Press Enter to continue");
@@ -113,7 +117,7 @@ class Program
 
           Reciepts.Clear();
 
-          CurrentPoints = int.Parse(LCLoadedRecieptsStrings[0][0]);
+          //CurrentPoints = int.Parse(LCLoadedRecieptsStrings[0][0]);
           LCLoadedRecieptsStrings.RemoveAt(0);
 
           foreach (List<String> record in LCLoadedRecieptsStrings)

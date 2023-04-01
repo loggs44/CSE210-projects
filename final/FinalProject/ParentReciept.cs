@@ -4,7 +4,7 @@ public abstract class ParentReciept{
     protected string _LCPuchaseDate;
     protected int _LCpoints;
     protected int _LCpurchaseTotal;
-    public ParentReciept(string LCstoreName, string LCPuchaseDate, int LCpoints, int LCpurchaseTotal){
+    public ParentReciept(string LCstoreName, string LCPuchaseDate, int LCpurchaseTotal, int LCpoints){
         _LCstoreName = LCstoreName;
         _LCPuchaseDate = LCPuchaseDate;
         _LCpoints = LCpoints;
@@ -13,10 +13,10 @@ public abstract class ParentReciept{
     public abstract double LCAmountofPoints();
 
     public string LCToString(){
-        return $"{_LCstoreName}|{_LCPuchaseDate}|{_LCpoints}|{_LCpurchaseTotal}";
+        return $"{_LCstoreName} {_LCPuchaseDate} {_LCpurchaseTotal} {_LCpoints}";
     }
 
     public string LCGetStringToSave(){
-        return $"{_LCstoreName}|{_LCPuchaseDate}|{_LCpoints}|{_LCpurchaseTotal}";
+        return $"{_LCstoreName} {_LCPuchaseDate} {_LCpurchaseTotal} {_LCpoints}";
     }
 }
