@@ -41,13 +41,13 @@ class Program
           //Create new goal
           menu.LCStoreMenu();
           LCChoice = menu.LCStoreSelection();
-          String LCStoreName = "";
+          int LCStoreName = 0;
           string LCPurchaseDate = "";
           int LCpurchaseTotal = 0;
           // int LCPointsTotal = 0;
 
-          PrintNoBreak("What is the name of the store? ");
-          LCStoreName = Read();
+          PrintNoBreak("What is the store ID? ");
+          LCStoreName = int.Parse(Read());
           Print("");
           PrintNoBreak("What was the purchase date?(Format: Day/Month/Year) ");
           LCPurchaseDate = Read();
@@ -125,7 +125,7 @@ class Program
             switch (record[5])
             {
               case "walmart":
-                WalmartReciept loadedwalmartreciept = new WalmartReciept(record[0], record[1], int.Parse(record[2]), int.Parse(record[3]));
+                WalmartReciept loadedwalmartreciept = new WalmartReciept(int.Parse(record[0]), record[1], int.Parse(record[2]), int.Parse(record[3]));
                 if (record[4] == "True")
                 {
                   loadedwalmartreciept.LCAmountofPoints();
@@ -133,7 +133,7 @@ class Program
                 Reciepts.Add(loadedwalmartreciept);
                 break;
               case "target":
-                TargetReciept loadedtargetreciept = new TargetReciept(record[0], record[1], int.Parse(record[2]), int.Parse(record[3]));
+                TargetReciept loadedtargetreciept = new TargetReciept(int.Parse(record[0]), record[1], int.Parse(record[2]), int.Parse(record[3]));
                 if (record[4] == "True")
                 {
                   loadedtargetreciept.LCAmountofPoints();
@@ -141,7 +141,7 @@ class Program
                 Reciepts.Add(loadedtargetreciept);
                 break;
               case "samsclub":
-                SamsClubReciept loadedsamsclubreciept = new SamsClubReciept(record[0], record[1], int.Parse(record[2]), int.Parse(record[3]));
+                SamsClubReciept loadedsamsclubreciept = new SamsClubReciept(int.Parse(record[0]), record[1], int.Parse(record[2]), int.Parse(record[3]));
                 if (record[4] == "True")
                 {
                   loadedsamsclubreciept.LCAmountofPoints();
@@ -149,7 +149,7 @@ class Program
                 Reciepts.Add(loadedsamsclubreciept);
                 break;
               case "albertsons":
-                AlbertsonsReciept loadedalbertsonsreciept = new AlbertsonsReciept(record[0], record[1], int.Parse(record[2]), int.Parse(record[3]));
+                AlbertsonsReciept loadedalbertsonsreciept = new AlbertsonsReciept(int.Parse(record[0]), record[1], int.Parse(record[2]), int.Parse(record[3]));
                 if (record[4] == "True")
                 {
                   loadedalbertsonsreciept.LCAmountofPoints();
